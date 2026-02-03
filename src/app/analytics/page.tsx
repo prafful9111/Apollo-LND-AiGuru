@@ -33,27 +33,27 @@ export default function AnalyticsPage() {
     return (
         <>
             <Sidebar />
-            <main className="min-h-screen bg-slate-50 dark:bg-slate-950 pl-20">
+            <main className="min-h-screen bg-slate-50 pl-20">
                 {/* Header */}
-                <header className="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 px-8 py-6">
+                <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-slate-200 px-8 py-6">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                             <button
                                 onClick={() => router.back()}
-                                className="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                                className="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors"
                             >
                                 <ArrowLeft size={18} />
                                 <span className="font-medium">Back</span>
                             </button>
-                            <div className="h-6 w-[1px] bg-slate-200 dark:bg-slate-800" />
+                            <div className="h-6 w-[1px] bg-slate-200" />
                             <div>
-                                <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Performance Analytics</h1>
-                                <p className="text-sm text-slate-500 dark:text-slate-400">Track your training progress and skill development</p>
+                                <h1 className="text-2xl font-bold text-slate-900">Performance Analytics</h1>
+                                <p className="text-sm text-slate-500">Track your training progress and skill development</p>
                             </div>
                         </div>
-                        <div className="flex items-center gap-3 px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800">
+                        <div className="flex items-center gap-3 px-4 py-2 rounded-lg bg-slate-100">
                             <Calendar size={16} className="text-slate-500" />
-                            <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Last 30 Days</span>
+                            <span className="text-sm font-medium text-slate-700">Last 30 Days</span>
                         </div>
                     </div>
                 </header>
@@ -98,20 +98,20 @@ export default function AnalyticsPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 mb-8"
+                        className="bg-white rounded-xl border border-slate-200 p-6 mb-8"
                     >
-                        <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-6">Skill Progression</h2>
+                        <h2 className="text-lg font-bold text-slate-900 mb-6">Skill Progression</h2>
                         <div className="space-y-6">
                             {skillBreakdown.map((skill, index) => (
                                 <div key={index}>
                                     <div className="flex items-center justify-between mb-2">
-                                        <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{skill.skill}</span>
+                                        <span className="text-sm font-semibold text-slate-700">{skill.skill}</span>
                                         <div className="flex items-center gap-3">
-                                            <span className="text-sm text-slate-500">Current: <span className="font-bold text-slate-900 dark:text-white">{skill.current}%</span></span>
+                                            <span className="text-sm text-slate-500">Current: <span className="font-bold text-slate-900">{skill.current}%</span></span>
                                             <span className="text-sm text-slate-400">Target: {skill.target}%</span>
                                         </div>
                                     </div>
-                                    <div className="h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                    <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
                                         <motion.div
                                             initial={{ width: 0 }}
                                             animate={{ width: `${skill.current}%` }}
@@ -129,47 +129,47 @@ export default function AnalyticsPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden"
+                        className="bg-white rounded-xl border border-slate-200 overflow-hidden"
                     >
-                        <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-800">
-                            <h2 className="text-lg font-bold text-slate-900 dark:text-white">Recent Sessions</h2>
+                        <div className="px-6 py-4 border-b border-slate-200">
+                            <h2 className="text-lg font-bold text-slate-900">Recent Sessions</h2>
                         </div>
                         <div className="overflow-x-auto">
                             <table className="w-full">
-                                <thead className="bg-slate-50 dark:bg-slate-800/50">
+                                <thead className="bg-slate-50">
                                     <tr>
-                                        <th className="px-6 py-3 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Scenario</th>
-                                        <th className="px-6 py-3 text-left text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Date</th>
-                                        <th className="px-6 py-3 text-center text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Overall</th>
-                                        <th className="px-6 py-3 text-center text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Empathy</th>
-                                        <th className="px-6 py-3 text-center text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Resolution</th>
-                                        <th className="px-6 py-3 text-center text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Protocol</th>
+                                        <th className="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Scenario</th>
+                                        <th className="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">Date</th>
+                                        <th className="px-6 py-3 text-center text-xs font-bold text-slate-500 uppercase tracking-wider">Overall</th>
+                                        <th className="px-6 py-3 text-center text-xs font-bold text-slate-500 uppercase tracking-wider">Empathy</th>
+                                        <th className="px-6 py-3 text-center text-xs font-bold text-slate-500 uppercase tracking-wider">Resolution</th>
+                                        <th className="px-6 py-3 text-center text-xs font-bold text-slate-500 uppercase tracking-wider">Protocol</th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
+                                <tbody className="divide-y divide-slate-200">
                                     {recentSessions.map((session, index) => (
                                         <motion.tr
                                             key={session.id}
                                             initial={{ opacity: 0, x: -20 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: 0.3 + index * 0.05 }}
-                                            className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors"
+                                            className="hover:bg-slate-50 transition-colors"
                                         >
                                             <td className="px-6 py-4 whitespace-nowrap">
                                                 <div className="flex items-center gap-2">
                                                     <CheckCircle size={16} className="text-emerald-500" />
-                                                    <span className="text-sm font-medium text-slate-900 dark:text-white">{session.scenario}</span>
+                                                    <span className="text-sm font-medium text-slate-900">{session.scenario}</span>
                                                 </div>
                                             </td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-500 dark:text-slate-400">{session.date}</td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-slate-500">{session.date}</td>
                                             <td className="px-6 py-4 whitespace-nowrap text-center">
-                                                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold ${session.score >= 90 ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400' : 'bg-amber-100 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400'}`}>
+                                                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold ${session.score >= 90 ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}`}>
                                                     {session.score}%
                                                 </span>
                                             </td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-slate-700 dark:text-slate-300">{session.empathy}%</td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-slate-700 dark:text-slate-300">{session.resolution}%</td>
-                                            <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-slate-700 dark:text-slate-300">{session.protocol}%</td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-slate-700">{session.empathy}%</td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-slate-700">{session.resolution}%</td>
+                                            <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-slate-700">{session.protocol}%</td>
                                         </motion.tr>
                                     ))}
                                 </tbody>
@@ -188,7 +188,7 @@ function StatCard({ icon, label, value, iconColor, iconBg }: { icon: React.React
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6"
+            className="bg-white rounded-xl border border-slate-200 p-6"
         >
             <div className="flex items-start justify-between mb-4">
                 <div className={`p-2 rounded-lg ${iconBg}`}>
@@ -196,8 +196,8 @@ function StatCard({ icon, label, value, iconColor, iconBg }: { icon: React.React
                 </div>
             </div>
             <div>
-                <p className="text-sm text-slate-500 dark:text-slate-400 mb-1">{label}</p>
-                <p className="text-3xl font-bold text-slate-900 dark:text-white">{value}</p>
+                <p className="text-sm text-slate-500 mb-1">{label}</p>
+                <p className="text-3xl font-bold text-slate-900">{value}</p>
             </div>
         </motion.div>
     );

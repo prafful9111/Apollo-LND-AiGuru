@@ -15,7 +15,7 @@ export default function LoginBackground() {
 
     return (
         <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-soft-slate">
-            <div className="absolute inset-0 bg-gradient-to-br from-soft-slate via-white dark:via-slate-900 to-slate-100 dark:to-slate-950 opacity-80" />
+            <div className="absolute inset-0 bg-gradient-to-br from-soft-slate via-white to-slate-100 opacity-80" />
 
             {/* Ambient glowing orbs - Slower, more breathing-like */}
             <motion.div

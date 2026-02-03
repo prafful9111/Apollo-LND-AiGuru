@@ -41,7 +41,7 @@ export default function Sidebar() {
             {/* Logout */}
             <button
                 onClick={() => router.replace('/')}
-                className="mt-auto w-10 h-10 flex items-center justify-center text-slate-400 hover:text-rose-500 transition-colors bg-slate-100/50 dark:bg-slate-800/50 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-500/10"
+                className="mt-auto w-10 h-10 flex items-center justify-center text-slate-400 hover:text-rose-500 transition-colors bg-slate-100/50 rounded-xl hover:bg-rose-50"
                 title="Logout"
             >
                 <LogOut size={20} />
@@ -53,7 +53,7 @@ export default function Sidebar() {
 function SidebarItem({ icon, label, href, active = false }: { icon: React.ReactNode, label: string, href: string, active?: boolean }) {
     return (
         <Link href={href} className="group relative flex items-center justify-center w-full aspect-square cursor-pointer">
-            <div className={`p-3 rounded-xl transition-all duration-300 ${active ? 'bg-apollo-blue text-white shadow-lg shadow-apollo-blue/30' : 'text-slate-500 dark:text-slate-400 hover:bg-white/50 dark:hover:bg-slate-700 hover:text-apollo-blue'}`}>
+            <div className={`p-3 rounded-xl transition-all duration-300 ${active ? 'bg-apollo-blue text-white shadow-lg shadow-apollo-blue/30' : 'text-slate-500 hover:bg-white/50 hover:text-apollo-blue'}`}>
                 {icon}
             </div>
 

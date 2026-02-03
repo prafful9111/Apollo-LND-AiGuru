@@ -26,7 +26,7 @@ export default function UnifiedAuthCard() {
     return (
         <motion.div
             animate={{
-                height: isLogin ? '560px' : '620px'
+                height: isLogin ? '580px' : '640px'
             }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className={clsx(
@@ -39,8 +39,23 @@ export default function UnifiedAuthCard() {
             {/* Decorative Glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-apollo-blue/40 blur-md rounded-full" />
 
+            {/* AI Guru Branding - Minimal & Elegant */}
+            <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-center mb-6"
+            >
+                <div className="inline-flex flex-col items-center">
+                    <h1 className="text-3xl font-bold tracking-tight text-slate-900 mb-1">
+                        AI <span className="text-apollo-blue">Guru</span>
+                    </h1>
+                    <div className="h-0.5 w-16 bg-gradient-to-r from-transparent via-apollo-blue to-transparent"></div>
+                </div>
+            </motion.div>
+
             {/* Header - Animated Content */}
-            <div className="text-center space-y-2 mb-2 min-h-[120px] flex flex-col items-center justify-center">
+            <div className="text-center space-y-2 mb-2 min-h-[100px] flex flex-col items-center justify-center">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={`icon-${mode}`}

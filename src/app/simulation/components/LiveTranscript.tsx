@@ -40,8 +40,7 @@ export default function LiveTranscript({ messages }: LiveTranscriptProps) {
                                 className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                             >
                                 <div className={`max-w-[80%] ${msg.role === 'user' ? 'text-right' : 'text-left'}`}>
-                                    <p className={`text-lg md:text-xl font-medium leading-relaxed tracking-wide ${msg.role === 'user' ? 'text-apollo-blue dark:text-cyan-400' : 'text-slate-700 dark:text-slate-300'
-                                        }`}>
+                                    <p className={`text-lg md:text-xl font-medium leading-relaxed tracking-wide ${msg.role === 'user' ? 'text-apollo-blue' : 'text-slate-700'}`}>
                                         {msg.text}
                                     </p>
                                 </div>

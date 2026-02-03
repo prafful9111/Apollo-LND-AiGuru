@@ -77,8 +77,8 @@ export default function SimulationPage({ params }: { params: { id: string } }) {
         <>
             <Sidebar />
             <main className="relative min-h-screen w-full bg-slate-50 overflow-hidden font-sans selection:bg-apollo-blue/20 pl-20">
-                {/* Background Texture - Clean Gradient */}
-                <div className="absolute inset-0 z-0 bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 transition-colors duration-500" />
+                {/* Background - Clean Light Theme */}
+                <div className="absolute inset-0 z-0 bg-gradient-to-b from-slate-50 via-white to-slate-50" />
 
                 {/* Header */}
                 <SimulationHeader scenarioTitle="Scenario #1: Delayed Appointment" />
