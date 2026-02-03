@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
 import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
 
 interface ScenarioCardProps {
     id: number;
@@ -14,6 +15,8 @@ interface ScenarioCardProps {
 }
 
 export default function ScenarioCard({ id, title, description, icon, category, delay }: ScenarioCardProps) {
+    const router = useRouter();
+
     // Category Color Map (for better visibility)
     const categoryColors: Record<string, string> = {
         'Doctors': 'bg-blue-100 text-blue-700 border-blue-200',
@@ -26,9 +29,14 @@ export default function ScenarioCard({ id, title, description, icon, category, d
 
     const tagStyle = categoryColors[category] || 'bg-slate-100 text-slate-600 border-slate-200';
 
+    const handleStartSimulation = () => {
+        router.push(`/simulation/${id}`);
+    };
+
     return (
         <motion.div
             layout
+            onClick={handleStartSimulation}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}

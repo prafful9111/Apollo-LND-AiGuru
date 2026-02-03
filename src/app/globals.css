@@ -43,6 +43,21 @@
   /* Slate 700 - Softer than black */
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f172a;
+    --foreground: #f8fafc;
+  }
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --color-soft-slate: #1e293b;
+  --color-arctic-white: #0f172a;
+  /* In dark mode, 'white' elements might need to be dark */
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

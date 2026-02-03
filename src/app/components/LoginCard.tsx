@@ -17,7 +17,7 @@ export default function LoginCard({ onSwitch }: { onSwitch: () => void }) {
 
         // Simulate API delay then transition
         setTimeout(() => {
-            router.push('/dashboard');
+            router.replace('/dashboard');
         }, 800); // Faster transition as requested
     };
 
@@ -98,7 +98,7 @@ export default function LoginCard({ onSwitch }: { onSwitch: () => void }) {
             </form>
             <div className="text-center mt-6">
                 <p className="text-xs text-slate-500">
-                    Don't have an account?{' '}
+                    Don&apos;t have an account?{' '}
                     <button onClick={onSwitch} className="text-apollo-blue font-semibold hover:underline cursor-pointer">
                         Sign up
                     </button>

@@ -62,10 +62,6 @@ export default function DashboardHeader({ searchTerm, setSearchTerm, selectedRol
 
                 {/* User Profile */}
                 <div className="flex items-center gap-4">
-                    <button className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-slate-400 hover:text-apollo-blue transition-colors relative">
-                        <Bell size={20} />
-                        <span className="absolute top-2 right-2 w-2 h-2 bg-red-400 rounded-full" />
-                    </button>
                     <div className="flex items-center gap-3 pl-4 border-l border-slate-200">
                         <div className="text-right hidden md:block">
                             <p className="text-sm font-bold text-slate-800">Dr. Sarah L.</p>
