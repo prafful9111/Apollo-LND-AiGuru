@@ -39,36 +39,22 @@ export default function UnifiedAuthCard() {
             {/* Decorative Glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-apollo-blue/40 blur-md rounded-full" />
 
-            {/* AI Guru Branding - Minimal & Elegant */}
+            {/* Logo Branding */}
             <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-center mb-6"
+                className="text-center mb-2 mt-4"
             >
-                <div className="inline-flex flex-col items-center">
-                    <h1 className="text-3xl font-bold tracking-tight text-slate-900 mb-1">
-                        AI <span className="text-apollo-blue">Guru</span>
-                    </h1>
-                    <div className="h-0.5 w-16 bg-gradient-to-r from-transparent via-apollo-blue to-transparent"></div>
-                </div>
+                <img
+                    src="/Logo.png"
+                    alt="AI Guru Logo"
+                    className="h-16 w-auto mx-auto"
+                />
             </motion.div>
 
             {/* Header - Animated Content */}
-            <div className="text-center space-y-2 mb-2 min-h-[100px] flex flex-col items-center justify-center">
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={`icon-${mode}`}
-                        initial={{ scale: 0.8, opacity: 0, y: 10 }}
-                        animate={{ scale: 1, opacity: 1, y: 0 }}
-                        exit={{ scale: 0.8, opacity: 0, y: -10 }}
-                        transition={{ duration: 0.2 }}
-                        className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-apollo-blue/10 to-transparent text-apollo-blue mb-2 shadow-sm"
-                    >
-                        {isLogin ? <Fingerprint size={24} /> : <UserPlus size={24} />}
-                    </motion.div>
-                </AnimatePresence>
-
+            <div className="text-center space-y-2 mb-2 flex flex-col items-center">
                 <AnimatePresence mode="wait">
                     <motion.h1
                         key={`title-${mode}`}
