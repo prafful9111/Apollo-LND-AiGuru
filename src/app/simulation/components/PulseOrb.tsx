@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Orb from './Orb';
+import { Bot } from 'lucide-react';
 
 type InteractionState = 'idle' | 'agent_speaking' | 'user_speaking' | 'ended';
 
@@ -56,92 +57,53 @@ export default function AudioWaveOrb({ state }: AudioWaveOrbProps) {
 
     return (
         <div className="relative w-full h-full flex items-center justify-center">
-            {/* Circular audio waves - only when speaking */}
-            {isActive && (
-                <>
-                    {/* Wave 1 */}
-                    <motion.div
-                        animate={{
-                            scale: [1, 2.2],
-                            opacity: [0.6, 0]
-                        }}
-                        transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeOut"
-                        }}
-                        className="absolute w-48 h-48 rounded-full border-4"
-                        style={{
-                            borderColor: colors.wave,
-                            boxShadow: `0 0 20px ${colors.glow}`
-                        }}
-                    />
-
-                    {/* Wave 2 */}
-                    <motion.div
-                        animate={{
-                            scale: [1, 2.2],
-                            opacity: [0.6, 0]
-                        }}
-                        transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeOut",
-                            delay: 0.4
-                        }}
-                        className="absolute w-48 h-48 rounded-full border-4"
-                        style={{
-                            borderColor: colors.wave,
-                            boxShadow: `0 0 20px ${colors.glow}`
-                        }}
-                    />
-
-                    {/* Wave 3 */}
-                    <motion.div
-                        animate={{
-                            scale: [1, 2.2],
-                            opacity: [0.6, 0]
-                        }}
-                        transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeOut",
-                            delay: 0.8
-                        }}
-                        className="absolute w-48 h-48 rounded-full border-4"
-                        style={{
-                            borderColor: colors.wave,
-                            boxShadow: `0 0 20px ${colors.glow}`
-                        }}
-                    />
-
-                    {/* Wave 4 */}
-                    <motion.div
-                        animate={{
-                            scale: [1, 2.2],
-                            opacity: [0.6, 0]
-                        }}
-                        transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            ease: "easeOut",
-                            delay: 1.2
-                        }}
-                        className="absolute w-48 h-48 rounded-full border-4"
-                        style={{
-                            borderColor: colors.wave,
-                            boxShadow: `0 0 20px ${colors.glow}`
-                        }}
-                    />
-                </>
-            )}
-
             {/* WebGL Orb */}
             <div className="relative w-48 h-48 flex items-center justify-center z-10">
                 <Orb
-                    color={state === 'agent_speaking' ? '#2883A3' : state === 'user_speaking' ? '#10B981' : '#0EA5E9'}
+                    color={state === 'agent_speaking' ? '#2883A3' : state === 'user_speaking' ? '#10B981' : '#67E8F9'}
+                    state={state}
                 />
+
+                {/* AI Bot Logo in center */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
+                    <Bot
+                        size={48}
+                        className="text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
+                        strokeWidth={2}
+                    />
+                </div>
             </div>
+
+            {/* Horizontal Audio Waveform - below the sphere */}
+            {isActive && (
+                <div className="absolute bottom-8 flex items-end justify-center gap-1 h-16">
+                    {[...Array(40)].map((_, i) => {
+                        // Create varied heights for more natural waveform
+                        const baseHeight = Math.sin(i * 0.5) * 20 + 30;
+
+                        return (
+                            <motion.div
+                                key={i}
+                                animate={{
+                                    height: [`${baseHeight * 0.3}%`, `${baseHeight}%`, `${baseHeight * 0.6}%`, `${baseHeight * 0.9}%`, `${baseHeight * 0.3}%`]
+                                }}
+                                transition={{
+                                    duration: 0.8,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: i * 0.02
+                                }}
+                                className="w-1 rounded-full"
+                                style={{
+                                    backgroundColor: colors.wave,
+                                    boxShadow: `0 0 6px ${colors.glow}`,
+                                    minHeight: '4px'
+                                }}
+                            />
+                        );
+                    })}
+                </div>
+            )}
 
             {/* Status indicator */}
             <div className="absolute bottom-0 flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 shadow-lg z-20">

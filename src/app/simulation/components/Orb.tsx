@@ -5,10 +5,12 @@ import './Orb.css';
 
 interface OrbProps {
   color?: string;
+  state?: 'idle' | 'agent_speaking' | 'user_speaking' | 'ended';
 }
 
 export default function Orb({
-  color = '#94A3B8'
+  color = '#94A3B8',
+  state = 'idle'
 }: OrbProps) {
   const ctnDom = useRef<HTMLDivElement>(null);
 
@@ -61,8 +63,14 @@ export default function Orb({
         precision highp float;
         uniform vec3 uColor;
         uniform float uTime;
+        uniform float uIsIdle;
         varying vec3 vNormal;
         varying vec3 vPos;
+        
+        vec3 hsl2rgb(vec3 c) {
+          vec3 rgb = clamp(abs(mod(c.x * 6.0 + vec3(0.0, 4.0, 2.0), 6.0) - 3.0) - 1.0, 0.0, 1.0);
+          return c.z + c.y * (rgb - 0.5) * (1.0 - abs(2.0 * c.z - 1.0));
+        }
         
         void main() {
           vec3 normal = normalize(vNormal);
@@ -71,21 +79,33 @@ export default function Orb({
           vec3 lightDir = normalize(vec3(0.5, 1.0, 1.0));
           float diffuse = max(dot(normal, lightDir), 0.0);
           
+          vec3 baseColor = uColor;
+          
+          // Add iridescent effect for idle state
+          if (uIsIdle > 0.5) {
+            float hueShift = uTime * 0.15 + vPos.x * 0.3 + vPos.y * 0.2;
+            float saturation = 0.6;
+            float lightness = 0.65;
+            vec3 iridescentColor = hsl2rgb(vec3(mod(hueShift, 1.0), saturation, lightness));
+            baseColor = mix(uColor, iridescentColor, 0.4);
+          }
+          
           // Ambient
-          vec3 ambient = uColor * 0.4;
+          vec3 ambient = baseColor * 0.4;
           
           // Rim Light (Fresnel)
-          vec3 viewDir = vec3(0.0, 0.0, 1.0); // Approximate view dir in view space is roughly along Z for simple spheres
+          vec3 viewDir = vec3(0.0, 0.0, 1.0);
           float fresnel = pow(1.0 - max(dot(normal, viewDir), 0.0), 3.0);
           
-          vec3 finalColor = ambient + (uColor * diffuse * 0.8) + (vec3(1.0) * fresnel * 0.4);
+          vec3 finalColor = ambient + (baseColor * diffuse * 0.8) + (vec3(1.0) * fresnel * 0.4);
           
           gl_FragColor = vec4(finalColor, 1.0);
         }
       `,
       uniforms: {
         uColor: { value: new Vec3(0, 0, 0) },
-        uTime: { value: 0 }
+        uTime: { value: 0 },
+        uIsIdle: { value: 0 }
       },
       // Ensure depth testing is on
       depthTest: true,
@@ -109,6 +129,7 @@ export default function Orb({
       curr.lerp(c, 0.1);
 
       program.uniforms.uTime.value = t;
+      program.uniforms.uIsIdle.value = state === 'idle' ? 1.0 : 0.0;
 
       // Animation
       // Floating bob
@@ -129,7 +150,7 @@ export default function Orb({
         container.removeChild(gl.canvas);
       }
     };
-  }, [color]);
+  }, [color, state]);
 
   return <div ref={ctnDom} className="orb-container" />;
 }

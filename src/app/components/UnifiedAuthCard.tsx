@@ -46,11 +46,10 @@ export default function UnifiedAuthCard() {
                 transition={{ duration: 0.5 }}
                 className="text-center mb-2 mt-4"
             >
-                <img
-                    src="/Logo.png"
-                    alt="AI Guru Logo"
-                    className="h-16 w-auto mx-auto"
-                />
+                <h1 className="text-4xl font-bold tracking-tight">
+                    <span className="text-black">AI</span>
+                    <span className="text-[#2883A3]"> GURU</span>
+                </h1>
             </motion.div>
 
             {/* Header - Animated Content */}
